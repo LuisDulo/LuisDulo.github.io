@@ -1,0 +1,85 @@
+{
+  "generatedAt": "2026-11-07",
+  "repoCount": 9,
+  "languages": [
+    {
+      "name": "Python",
+      "bytes": 535945,
+      "share": 44.55,
+      "repos": [
+        "ICS3105-Lab",
+        "smart-school-feeding"
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "bytes": 487600,
+      "share": 40.53,
+      "repos": [
+        "Cat2_MMA",
+        "ICS-Project1-",
+        "smart-school-feeding"
+      ]
+    },
+    {
+      "name": "EJS",
+      "bytes": 54800,
+      "share": 4.55,
+      "repos": [
+        "ICS-Project1-"
+      ]
+    },
+    {
+      "name": "Kotlin",
+      "bytes": 45719,
+      "share": 3.8,
+      "repos": [
+        "TicketMasterApp"
+      ]
+    },
+    {
+      "name": "CSS",
+      "bytes": 33229,
+      "share": 2.76,
+      "repos": [
+        "Cat2_MMA",
+        "ICS-Project1-",
+        "smart-school-feeding"
+      ]
+    },
+    {
+      "name": "HTML",
+      "bytes": 30053,
+      "share": 2.5,
+      "repos": [
+        "Cat2_MMA",
+        "ICS-Project1-",
+        "smart-school-feeding"
+      ]
+    },
+    {
+      "name": "Java",
+      "bytes": 14219,
+      "share": 1.18,
+      "repos": [
+        "SchoolAssignmentCalculator"
+      ]
+    },
+    {
+      "name": "Assembly",
+      "bytes": 958,
+      "share": 0.08,
+      "repos": [
+        "assembly-c-activity"
+      ]
+    },
+    {
+      "name": "C",
+      "bytes": 612,
+      "share": 0.05,
+      "repos": [
+        "assembly-c-activity"
+      ]
+    }
+  ]
+}
