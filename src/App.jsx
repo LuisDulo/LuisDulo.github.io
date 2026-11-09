@@ -1,5 +1,5 @@
 import github from './data/github.json';
-import { GITHUB, EMAIL, languageNotes, capstone, recent, projects, experience, education, skills } from './content.js';
+import { GITHUB, EMAIL, languageNotes, about, capstone, recent, projects, experience, education, skills } from './content.js';
 
 function CodeIcon() {
   return (
@@ -24,6 +24,31 @@ function Section({ id, label, title, children }) {
       <h2>{title}</h2>
       {children}
     </section>
+  );
+}
+
+function About() {
+  return (
+    <Section id="about" label="About me" title="Hi, I'm Luis">
+      <div className="about">
+        <div className="about-text">
+          {about.paragraphs.map((paragraph) => <p key={paragraph.slice(0, 24)}>{paragraph}</p>)}
+          <dl className="facts">
+            {about.facts.map(([label, value]) => (
+              <div key={label}>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <figure className="about-photo">
+          <img src={about.photo.src} width={about.photo.width} height={about.photo.height}
+            alt="Luis Okal Dulo at the Isuzu East Africa offices" loading="lazy" />
+          <figcaption>{about.photo.caption}</figcaption>
+        </figure>
+      </div>
+    </Section>
   );
 }
 
@@ -169,6 +194,7 @@ export default function App() {
       <header className="nav">
         <a className="brand" href="#top">Luis Okal</a>
         <nav aria-label="Sections">
+          <a href="#about">About</a>
           <a href="#languages">Languages</a>
           <a href="#capstone">Capstone</a>
           <a href="#recent">Projects</a>
@@ -177,17 +203,21 @@ export default function App() {
       </header>
       <main id="top">
         <section className="hero">
-          <p className="eyebrow">Informatics and Computer Science, Strathmore University</p>
-          <h1>Luis Enrique Okal Dulo</h1>
-          <p className="hero-text">
-            I build full-stack web and mobile software, from Django APIs and M-Pesa payments to React
-            interfaces, data pipelines and applied machine learning, and I review it for security.
-          </p>
-          <div className="actions">
-            <a className="button" href={`mailto:${EMAIL}`}>Email me</a>
-            <a className="button ghost" href={GITHUB}>GitHub</a>
+          <div className="hero-copy">
+            <p className="eyebrow">Informatics and Computer Science, Strathmore University</p>
+            <h1>Luis Enrique Okal Dulo</h1>
+            <p className="hero-text">
+              I build full-stack web and mobile software, from Django APIs and M-Pesa payments to React
+              interfaces, data pipelines and applied machine learning, and I review it for security.
+            </p>
+            <div className="actions">
+              <a className="button" href={`mailto:${EMAIL}`}>Email me</a>
+              <a className="button ghost" href={GITHUB}>GitHub</a>
+            </div>
           </div>
+          <img className="avatar" src="/images/luis-profile.webp" width="560" height="560" alt="Portrait of Luis Okal Dulo" />
         </section>
+        <About />
         <Languages />
         <Capstone />
         <Recent />
@@ -196,7 +226,7 @@ export default function App() {
       </main>
       <footer className="footer">
         <h2>Let's talk</h2>
-        <p>Graduating July 2027. Outside code: basketball, pool and gaming.</p>
+        <p>Questions about a project, or a role you think I'd fit? Email me.</p>
         <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
       </footer>
     </>
