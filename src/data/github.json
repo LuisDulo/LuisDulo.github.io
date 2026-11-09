@@ -1,30 +1,58 @@
 {
-  "generatedAt": "2026-11-07",
-  "repoCount": 9,
+  "generatedAt": "2026-11-09",
+  "repoCount": 14,
   "languages": [
     {
       "name": "Python",
-      "bytes": 535945,
-      "share": 44.55,
+      "bytes": 815193,
+      "share": 48.51,
       "repos": [
         "ICS3105-Lab",
-        "smart-school-feeding"
+        "LuisDulo.github.io",
+        "chama",
+        "sheria-rag",
+        "smart-school-feeding",
+        "smart-school-feeding-security-review"
       ]
     },
     {
       "name": "JavaScript",
-      "bytes": 487600,
-      "share": 40.53,
+      "bytes": 503797,
+      "share": 29.98,
       "repos": [
         "Cat2_MMA",
         "ICS-Project1-",
+        "LuisDulo.github.io",
+        "smart-school-feeding"
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "bytes": 145445,
+      "share": 8.66,
+      "repos": [
+        "chama",
+        "kenya-prices-pipeline",
+        "sheria-rag"
+      ]
+    },
+    {
+      "name": "CSS",
+      "bytes": 62078,
+      "share": 3.69,
+      "repos": [
+        "Cat2_MMA",
+        "ICS-Project1-",
+        "LuisDulo.github.io",
+        "chama",
+        "sheria-rag",
         "smart-school-feeding"
       ]
     },
     {
       "name": "EJS",
       "bytes": 54800,
-      "share": 4.55,
+      "share": 3.26,
       "repos": [
         "ICS-Project1-"
       ]
@@ -32,43 +60,44 @@
     {
       "name": "Kotlin",
       "bytes": 45719,
-      "share": 3.8,
+      "share": 2.72,
       "repos": [
         "TicketMasterApp"
       ]
     },
     {
-      "name": "CSS",
-      "bytes": 33229,
-      "share": 2.76,
-      "repos": [
-        "Cat2_MMA",
-        "ICS-Project1-",
-        "smart-school-feeding"
-      ]
-    },
-    {
       "name": "HTML",
-      "bytes": 30053,
-      "share": 2.5,
+      "bytes": 31675,
+      "share": 1.88,
       "repos": [
         "Cat2_MMA",
         "ICS-Project1-",
+        "LuisDulo.github.io",
+        "chama",
+        "sheria-rag",
         "smart-school-feeding"
       ]
     },
     {
       "name": "Java",
       "bytes": 14219,
-      "share": 1.18,
+      "share": 0.85,
       "repos": [
         "SchoolAssignmentCalculator"
       ]
     },
     {
+      "name": "PowerShell",
+      "bytes": 5938,
+      "share": 0.35,
+      "repos": [
+        "kenya-prices-pipeline"
+      ]
+    },
+    {
       "name": "Assembly",
       "bytes": 958,
-      "share": 0.08,
+      "share": 0.06,
       "repos": [
         "assembly-c-activity"
       ]
@@ -76,7 +105,7 @@
     {
       "name": "C",
       "bytes": 612,
-      "share": 0.05,
+      "share": 0.04,
       "repos": [
         "assembly-c-activity"
       ]

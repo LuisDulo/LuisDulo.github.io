@@ -1,5 +1,18 @@
 import github from './data/github.json';
-import { GITHUB, EMAIL, languageNotes, capstone, projects, experience, education, skills } from './content.js';
+import { GITHUB, EMAIL, languageNotes, capstone, recent, projects, experience, education, skills } from './content.js';
+
+function CodeIcon() {
+  return (
+    <svg className="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none"
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M8 6 2 12l6 6M16 6l6 6-6 6" />
+    </svg>
+  );
+}
+
+function SourceLink({ href }) {
+  return <a className="source" href={href}><CodeIcon />Source code</a>;
+}
 
 const formatShare = (share) => (share < 1 ? `${share.toFixed(2)}%` : `${share.toFixed(1)}%`);
 const formatSize = (bytes) => (bytes >= 1000 ? `${Math.round(bytes / 1000)} KB` : `${bytes} B`);
@@ -32,7 +45,7 @@ function Languages() {
             <span className="lang-value">{formatShare(language.share)}</span>
             <span className="lang-note">
               {languageNotes[language.name] || `Used in ${language.repos.join(', ')}`}
-              <span className="lang-size"> · {formatSize(language.bytes)}</span>
+              <span className="lang-size"> | {formatSize(language.bytes)}</span>
             </span>
           </li>
         ))}
@@ -75,9 +88,34 @@ function Capstone() {
   );
 }
 
+function Recent() {
+  return (
+    <Section id="recent" label="Built since the capstone" title="Recent projects">
+      <p className="lede">
+        Each one has its own repository, planned in sprints on a public board, with every change made
+        through an issue and a pull request.
+      </p>
+      <div className="recent">
+        {recent.map((project) => (
+          <article key={project.name} className="recent-card">
+            <p className="mono">{project.kind}</p>
+            <h3>{project.name}</h3>
+            <p className="figure">{project.figure}</p>
+            <p className="mono">{project.unit}</p>
+            <p className="recent-text">{project.text}</p>
+            <p className="recent-detail">{project.detail}</p>
+            <ul className="tags">{project.stack.map((tag) => <li key={tag}>{tag}</li>)}</ul>
+            <SourceLink href={project.url} />
+          </article>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
 function Projects() {
   return (
-    <Section id="projects" label="More work" title="Other projects">
+    <Section id="projects" label="Earlier work" title="Coursework and early projects">
       <div className="projects">
         {projects.map((project) => (
           <article key={project.name} className="project">
@@ -85,7 +123,7 @@ function Projects() {
             <h3>{project.name}</h3>
             <p>{project.text}</p>
             <ul className="tags">{project.stack.map((tag) => <li key={tag}>{tag}</li>)}</ul>
-            {project.url && <a href={project.url}>Source code</a>}
+            {project.url && <SourceLink href={project.url} />}
           </article>
         ))}
       </div>
@@ -99,7 +137,7 @@ function Background() {
       <div className="split">
         <div>
           <h3>{experience.role}</h3>
-          <p className="mono">{experience.org} · {experience.dates}</p>
+          <p className="mono">{experience.org} | {experience.dates}</p>
           <ul className="points">{experience.points.map((point) => <li key={point}>{point}</li>)}</ul>
         </div>
         <dl className="education">
@@ -133,7 +171,7 @@ export default function App() {
         <nav aria-label="Sections">
           <a href="#languages">Languages</a>
           <a href="#capstone">Capstone</a>
-          <a href="#projects">Projects</a>
+          <a href="#recent">Projects</a>
           <a href="#background">Background</a>
         </nav>
       </header>
@@ -143,7 +181,7 @@ export default function App() {
           <h1>Luis Enrique Okal Dulo</h1>
           <p className="hero-text">
             I build full-stack web and mobile software, from Django APIs and M-Pesa payments to React
-            interfaces and applied machine learning.
+            interfaces, data pipelines and applied machine learning, and I review it for security.
           </p>
           <div className="actions">
             <a className="button" href={`mailto:${EMAIL}`}>Email me</a>
@@ -152,6 +190,7 @@ export default function App() {
         </section>
         <Languages />
         <Capstone />
+        <Recent />
         <Projects />
         <Background />
       </main>
