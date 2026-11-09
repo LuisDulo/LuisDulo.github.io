@@ -18,6 +18,21 @@ export const languageNotes = {
   C: 'C program calling an assembly routine',
 };
 
+export const about = {
+  paragraphs: [
+    "I'm Luis Okal, an Informatics and Computer Science student at Strathmore University, graduating in July 2027. Most of what I build handles real money or real data for people in Kenya: school meal payments over M-Pesa, savings groups, fuel price data, and plain-language answers about tax, SHA and HELB rules.",
+    'I work across the whole stack, from Django and FastAPI back ends to React and React Native front ends, and I like proving that things work: tests for every fix, evaluation sets for models, and quality checks before data is published.',
+    'My attachment at Isuzu East Africa put me on the support side of software. I resolved help desk tickets, set up and networked new machines, kept the IT asset records, and automated support workflows with Power Apps and Power Automate.',
+    'Away from the keyboard I play basketball, and was on the Nairobi School team that reached the Nairobi Region final. I also enjoy pool and gaming.',
+  ],
+  facts: [
+    ['Studying', 'BSc Informatics and Computer Science, Strathmore University'],
+    ['Graduating', 'July 2027'],
+    ['Experience', 'IT and Digital Transformation attachment, Isuzu East Africa'],
+  ],
+  photo: { src: '/images/luis-isuzu.webp', width: 338, height: 700, caption: 'On attachment at Isuzu East Africa, 2026' },
+};
+
 export const capstone = {
   url: repo('smart-school-feeding'),
   summary:
