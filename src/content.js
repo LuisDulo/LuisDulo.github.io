@@ -5,11 +5,13 @@ const repo = (name) => `${GITHUB}/${name}`;
 
 // What each measured language was used for, keyed by GitHub's language name.
 export const languageNotes = {
-  Python: 'Django REST API, scikit-learn and XGBoost pipelines, image-processing labs',
+  Python: 'Django REST and FastAPI back ends, scikit-learn and XGBoost pipelines, retrieval and evaluation',
   JavaScript: 'React dashboard, React Native app, Node and Express back end',
+  TypeScript: 'Data pipeline, and the React clients for CHAMA and Sheria RAG',
   EJS: 'Server-rendered views for the Artify marketplace',
   Kotlin: 'Android ticketing app with Jetpack Compose',
   CSS: 'Styling for the web projects',
+  PowerShell: 'Scheduled daily refresh for the data pipeline',
   HTML: 'Page structure for the web projects',
   Java: 'Swing desktop calculator',
   Assembly: 'x86-64 factorial and summing routines',
@@ -31,10 +33,10 @@ export const capstone = {
       figure: '1.03',
       unit: 'meals mean error',
       title: 'Demand forecasting',
-      text: 'Compared Linear Regression, Random Forest and XGBoost on 3,000 held-out rows. XGBoost scored best, with R² of 0.81 against 0.59 for Linear Regression, whose mean error was 1.45 meals.',
+      text: 'Compared Linear Regression, Random Forest and XGBoost on 3,000 held-out rows. XGBoost scored best, with an R-squared of 0.81 against 0.59 for Linear Regression, whose mean error was 1.45 meals.',
     },
     {
-      figure: '28% → 100%',
+      figure: '28% to 100%',
       unit: 'recall on injected anomalies',
       title: 'Meal-serving anomalies',
       text: 'An Isolation Forest cannot flag night or weekend meals it never saw in training, so the detector pairs it with explainable rules. Together they caught all 53 injected anomalies at 88% precision.',
@@ -47,8 +49,52 @@ export const capstone = {
     },
   ],
   caveat: 'Evaluated on synthetic and demo data, not a live school deployment.',
-  meta: ['Strathmore University capstone', 'Partner: Webmasters Kenya', 'Agile Scrum, five two-week sprints', '227 backend test functions'],
+  meta: ['Strathmore University capstone', 'Partner: Webmasters Kenya', 'Agile Scrum, five two-week sprints', '244 backend tests'],
 };
+
+// Projects built after the capstone, each with its own repo, sprints and pull requests.
+export const recent = [
+  {
+    name: 'CHAMA',
+    kind: 'Fintech platform',
+    figure: '12 of 12',
+    unit: 'acceptance criteria met, 129 backend tests',
+    text: 'A platform for running savings groups. One account can run several chamas, each with its own members, roles, versioned rules and statements. Members pay by M-Pesa STK Push or in cash, and every shilling is posted to a double-entry ledger.',
+    detail: 'Money is credited only when M-Pesa confirms a payment, never when it is requested, and a repeated callback changes nothing.',
+    stack: ['Django REST Framework', 'PostgreSQL', 'React', 'TypeScript', 'M-Pesa Daraja'],
+    url: repo('chama'),
+  },
+  {
+    name: 'Sheria RAG',
+    kind: 'AI retrieval app',
+    figure: '0.98',
+    unit: 'Hit@12 on 44 labelled questions',
+    text: 'A chatbot for Kenyan tax, SHA and HELB rules that answers only from official KRA, SHA and HELB guidance, and says so when the pages do not cover a question. Embeddings run locally, and Claude writes the answer when an API key is set.',
+    detail: 'Hybrid search was built first but did not beat plain vector search, so the simpler option stayed the default.',
+    stack: ['Python', 'FastAPI', 'PostgreSQL', 'pgvector', 'Claude API', 'React', 'TypeScript'],
+    url: repo('sheria-rag'),
+  },
+  {
+    name: 'Kenya Prices Pipeline',
+    kind: 'Data engineering',
+    figure: '8',
+    unit: 'quality checks before every publish',
+    text: 'A daily pipeline that extracts EPRA pump prices and Central Bank of Kenya inflation, cleans them, loads a PostgreSQL star schema and publishes curated CSV files for a Power BI dashboard. A run that fails a check rolls back.',
+    detail: 'Every rejected row is kept with its reason. One finding: Nairobi petrol rose from KES 180.66 to KES 226.96 between November 2024 and October 2026.',
+    stack: ['TypeScript', 'Node.js', 'PostgreSQL', 'GitHub Actions', 'PowerShell', 'Power BI'],
+    url: repo('kenya-prices-pipeline'),
+  },
+  {
+    name: 'Smart School Feeding Security Review',
+    kind: 'Application security',
+    figure: '10 of 11',
+    unit: 'findings fixed, each proved by a test',
+    text: 'A review of my capstone against the OWASP Top 10, starting from the money. It found a critical flaw where a forged M-Pesa callback could credit a meal account without payment, plus token, configuration and dependency issues.',
+    detail: 'Each fix went through its own pull request, and the review added CI so tests and security scans run on every change.',
+    stack: ['OWASP Top 10', 'pytest', 'pip-audit', 'bandit', 'npm audit'],
+    url: repo('smart-school-feeding-security-review'),
+  },
+];
 
 export const projects = [
   {
@@ -128,14 +174,16 @@ export const education = [
 ];
 
 export const skills = [
-  ['Web and mobile', 'React, React Native, HTML, CSS'],
-  ['Back end', 'Django REST Framework, RESTful API design'],
-  ['Databases', 'PostgreSQL, SQL, Firebase, MongoDB'],
-  ['Machine learning', 'scikit-learn, Linear Regression, Isolation Forest'],
-  ['Payments', 'M-Pesa Daraja API'],
-  ['Data and automation', 'Power BI, Power Apps, Power Automate'],
+  ['Web and mobile', 'React, React Native, TypeScript, HTML, CSS'],
+  ['Back end', 'Django REST Framework, FastAPI, Node.js, RESTful API design'],
+  ['Databases', 'PostgreSQL, pgvector, SQL, Firebase, MongoDB'],
+  ['Machine learning and AI', 'scikit-learn, XGBoost, Isolation Forest, retrieval-augmented generation, Claude API'],
+  ['Data engineering', 'ETL pipelines, star schemas, data quality checks, Power BI'],
+  ['Security', 'OWASP Top 10 reviews, dependency auditing, security testing'],
+  ['Payments', 'M-Pesa Daraja API, double-entry ledgers'],
+  ['DevOps and automation', 'GitHub Actions, PowerShell, Power Apps, Power Automate'],
   ['Embedded and IoT', 'Sensor and microcontroller integration, prototyping'],
   ['Infrastructure', 'Network and switch configuration, Linux, Windows'],
   ['Fundamentals', 'Data structures and algorithms, computer networks, computer architecture'],
-  ['Ways of working', 'Agile Scrum'],
+  ['Ways of working', 'Agile Scrum, issue-driven pull requests'],
 ];
