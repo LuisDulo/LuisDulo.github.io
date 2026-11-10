@@ -1,17 +1,24 @@
 import github from './data/github.json';
-import { GITHUB, EMAIL, languageNotes, about, capstone, recent, projects, experience, education, skills } from './content.js';
+import { GITHUB, EMAIL, PHONE, CV, languageNotes, about, capstone, recent, projects, experience, education, skills } from './content.js';
 
-function CodeIcon() {
+const iconPaths = {
+  code: 'M8 6 2 12l6 6M16 6l6 6-6 6',
+  download: 'M12 3v12m0 0-5-5m5 5 5-5M4 19h16',
+  phone: 'M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z',
+  mail: 'M3 6h18v12H3zM3 6l9 7 9-7',
+};
+
+function Icon({ name }) {
   return (
     <svg className="icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none"
       stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M8 6 2 12l6 6M16 6l6 6-6 6" />
+      <path d={iconPaths[name]} />
     </svg>
   );
 }
 
 function SourceLink({ href }) {
-  return <a className="source" href={href}><CodeIcon />Source code</a>;
+  return <a className="source" href={href}><Icon name="code" />Source code</a>;
 }
 
 const formatShare = (share) => (share < 1 ? `${share.toFixed(2)}%` : `${share.toFixed(1)}%`);
@@ -212,8 +219,13 @@ export default function App() {
             </p>
             <div className="actions">
               <a className="button" href={`mailto:${EMAIL}`}>Email me</a>
+              <a className="button ghost with-icon" href={CV.pdf} download><Icon name="download" />Download CV</a>
               <a className="button ghost" href={GITHUB}>GitHub</a>
             </div>
+            <ul className="contact-line">
+              <li><a href={`tel:${PHONE.tel}`}><Icon name="phone" />{PHONE.display}</a></li>
+              <li><a href={`mailto:${EMAIL}`}><Icon name="mail" />{EMAIL}</a></li>
+            </ul>
           </div>
           <img className="avatar" src="/images/luis-profile.webp" width="560" height="560" alt="Portrait of Luis Okal Dulo" />
         </section>
@@ -226,8 +238,15 @@ export default function App() {
       </main>
       <footer className="footer">
         <h2>Let's talk</h2>
-        <p>Questions about a project, or a role you think I'd fit? Email me.</p>
-        <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+        <p>Questions about a project, or a role you think I'd fit? Call, email or grab my CV.</p>
+        <ul className="contact-list">
+          <li><a href={`tel:${PHONE.tel}`}><Icon name="phone" />{PHONE.display}</a></li>
+          <li><a href={`mailto:${EMAIL}`}><Icon name="mail" />{EMAIL}</a></li>
+          <li>
+            <a href={CV.pdf} download><Icon name="download" />CV (PDF)</a>
+            <a className="alt-format" href={CV.docx} download>Word version</a>
+          </li>
+        </ul>
       </footer>
     </>
   );
