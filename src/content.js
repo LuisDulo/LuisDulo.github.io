@@ -1,5 +1,7 @@
 export const GITHUB = 'https://github.com/LuisDulo';
 export const EMAIL = 'luisokal15@gmail.com';
+export const PHONE = { display: '+254 796 890 292', tel: '+254796890292' };
+export const CV = { pdf: '/cv/Luis_Okal_CV.pdf', docx: '/cv/Luis_Okal_CV.docx' };
 
 const repo = (name) => `${GITHUB}/${name}`;
 
